@@ -1,3 +1,9 @@
+# Ignore data
+Alaskan-salmon1922-2017/
+
+# Ignore the .DS_Store
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
