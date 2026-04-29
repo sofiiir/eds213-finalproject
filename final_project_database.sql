@@ -4,7 +4,6 @@ CREATE TABLE Salmon (
     species VARCHAR,
     length_measurement_type VARCHAR,
     sampleyear BIGINT,
-    asl_project_type VARCHAR,
     sampledate DATE,
     length DOUBLE,
     weight VARCHAR,
@@ -14,7 +13,7 @@ CREATE TABLE Salmon (
     gear VARCHAR,
     stat_area DOUBLE,
     datasource VARCHAR,
-    locationunique VARCHAR
+    locationunique VARCHAR REFERENCES Salmon_location(locationunique)
 );
 
 INSERT INTO Salmon
