@@ -25,7 +25,7 @@ CREATE TABLE Salmon_location (
     id BIGINT,
     locationunique VARCHAR PRIMARY KEY,
     sasap_region_corrected VARCHAR,
-    location VARCHAR,
+    location VARCHAR ,
     aslprojecttype VARCHAR,
     district VARCHAR,
     sub_district VARCHAR,
