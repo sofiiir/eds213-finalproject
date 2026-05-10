@@ -1,6 +1,7 @@
 -- convert the clean dataframe into a table
 CREATE TABLE Salmon (
-    id BIGINT PRIMARY KEY,
+    id BIGINT,
+    salmon_id BIGINT PRIMARY KEY,
     species VARCHAR,
     length_measurement_type VARCHAR,
     sampleyear BIGINT,
@@ -13,7 +14,7 @@ CREATE TABLE Salmon (
     gear VARCHAR,
     stat_area DOUBLE,
     datasource VARCHAR,
-    locationunique VARCHAR REFERENCES Salmon_location(locationunique)
+    locationunique VARCHAR 
 );
 
 INSERT INTO Salmon
@@ -27,8 +28,8 @@ CREATE TABLE Salmon_location (
     sasap_region_corrected VARCHAR,
     location VARCHAR ,
     aslprojecttype VARCHAR,
-    district VARCHAR,
-    sub_district VARCHAR,
+    districtid VARCHAR,
+    sub_districtid VARCHAR,
     lat DOUBLE,
     lon DOUBLE,
     locationid VARCHAR
