@@ -58,15 +58,44 @@ sampled_salmon
 ```
 
 # Visualize findings
+
+There are a lot of different ASL Project Types. We'll just visualize the top three
+
+```{r}
+sampled_salmon |> 
+  filter(aslprojecttype != "999") |> 
+  group_by(aslprojecttype) |> 
+  summarize(sum = sum(num_sample)) |> 
+  arrange(desc(sum))
+```
+The top three ASL project type is commercial catch, escapement, and hatchery cost recovery.
+
 ```{r}
 
 sampled_salmon |> 
+  filter(aslprojecttype == "commercial catch" | aslprojecttype == "escapement" | aslprojecttype == "hatchery cost recovery") |> 
   ggplot() +
   geom_col(aes(x = species, y = num_sample)) +
   facet_wrap(vars(aslprojecttype)) + 
   coord_flip() +
-  theme_minimal()
+  theme_minimal() + 
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) +
+  labs(x = "Salmon species",
+       y = "Count")
 ```
+
+```{r}
+sampled_salmon |> 
+  filter(aslprojecttype == "hatchery cost recovery") |> 
+  ggplot() +
+  geom_col(aes(x = species, y = num_sample)) +
+  coord_flip() +
+  theme_minimal() + 
+  labs(x = "Salmon species",
+       y = "Count",
+       title = "Hatchery Cost Recovery")
+```
+
 
 
 ## Close the database connection
