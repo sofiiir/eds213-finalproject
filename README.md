@@ -7,14 +7,14 @@ This repository holds the code to create a relational database to house data on 
 ```{bash}
 .
 ├── Alaskan-salmon1922-2017
-│   ├── Screenshot 2026-04-08 at 10.34.07 AM.png
-│   ├── alaskan-salmon.docx
-│   ├── bag-info.txt
-│   ├── bagit.txt
 │   ├── data
-│   ├── manifest-md5.txt
-│   ├── metadata
-│   └── tagmanifest-md5.txt
+│   │   ├── ASLProjectType.csv
+│   │   ├── ASL_master.csv
+│   │   ├── ASL_processing.Rmd
+│   │   ├── ASL_summary_byFWSWage.csv
+│   │   ├── Locations_subdistricts_uniqueID.csv
+│   │   └──gear.csv
+│   └── metadata
 ├── README.md
 ├── alaska-salmon-database
 │   ├── database.duckdb
@@ -27,3 +27,7 @@ This repository holds the code to create a relational database to house data on 
 ├── final_project_database.sql
 └── querying-salmon-database.sql
 ```
+
+## Repository contents
+
+- Jupyter notebook : [alaska-salmon-master-cleaning.ipynb](https://github.com/sofiiir/eds213-finalproject/blob/main/alaska-salmon-master-cleaning.ipynb) 
