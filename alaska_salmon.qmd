@@ -1,0 +1,77 @@
+---
+title: "Alaska Salmon 1922 - 2017"
+format: html
+author: Sofia Rodas
+---
+
+This quarto document contains the code to access the locally housed duckdb database that contains the data of Alaska salmon from 1922-2017. The data was originally downloaded from [The Knowledge Network for Biocomplexity (KNB)](https://knb.ecoinformatics.org/view/doi:10.5063/F1707ZTM). 
+
+Code and instructions to make the relational database is located in the repository for this [project](https://github.com/sofiiir/eds213-finalproject.git). 
+
+
+## Connecting to the local database
+
+```{r}
+# install packages
+library(tidyverse)
+library(DBI) # makes connections to the databases
+library(duckdb)
+library(dbplyr)
+```
+
+Connect to the local database using duckdb. 
+```{r}
+conn <- DBI::dbConnect(duckdb::duckdb(),
+                       dbdir = "alaska-salmon-database/database.duckdb")
+
+conn
+```
+
+```{r}
+# view the tables contained in this database
+DBI::dbListTables(conn)
+```
+
+## Look at the tables necessary to make the visual
+```{r}
+salmon_data <- tbl(conn, "Salmon")
+head(salmon_data)
+```
+
+```{r}
+locations <- tbl(conn, "Salmon_location")
+head(locations)
+```
+# Overarching question
+
+How many sampling are there for each species based on each sampling method throughout Alaska Salmon sampling from 1922 to 2017?
+```{r}
+# use dblyr code to run a query
+sampled_salmon <- salmon_data |> 
+  left_join(locations, by = "locationunique", keep = FALSE) |> 
+  group_by(species, aslprojecttype) |> 
+  summarise(num_sample = n()) |> 
+  collect()
+
+# view the output
+sampled_salmon
+```
+
+# Visualize findings
+```{r}
+
+sampled_salmon |> 
+  ggplot() +
+  geom_col(aes(x = species, y = num_sample)) +
+  facet_wrap(vars(aslprojecttype)) + 
+  coord_flip() +
+  theme_minimal()
+```
+
+
+## Close the database connection
+
+```{r}
+DBI::dbDisconnect(conn, shutdown = TRUE)
+```
+
