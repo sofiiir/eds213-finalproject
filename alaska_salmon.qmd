@@ -68,6 +68,16 @@ sampled_salmon |>
   summarize(sum = sum(num_sample)) |> 
   arrange(desc(sum))
 ```
+### Create a color palette
+```{r}
+pal <- c("chum" = "#78473f",
+         "chinook" = "#4d3d33", 
+         "pink" = "#cd5b47",
+         "sockeye" = "#a42c2d",
+         "coho" = "#6d6047")
+```
+
+
 The top three ASL project type is commercial catch, escapement, and hatchery cost recovery.
 
 ```{r}
@@ -75,7 +85,9 @@ The top three ASL project type is commercial catch, escapement, and hatchery cos
 sampled_salmon |> 
   filter(aslprojecttype == "commercial catch" | aslprojecttype == "escapement" | aslprojecttype == "hatchery cost recovery") |> 
   ggplot() +
-  geom_col(aes(x = species, y = num_sample)) +
+  geom_col(aes(y = num_sample,
+               x = reorder(species, -num_sample))) +
+  scale_fill_manual(values = pal) +
   facet_wrap(vars(aslprojecttype)) + 
   coord_flip() +
   theme_minimal() + 
