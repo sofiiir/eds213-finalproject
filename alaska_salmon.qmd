@@ -97,6 +97,9 @@ sampled_salmon |>
   labs(x = "Salmon species",
        y = "Count") 
 ```
+Sockeye salmon are the salmon species that has been most caught through commercial catch and escapement. 
+
+#### A closer look at hatchery cost recovery
 
 ```{r}
 sampled_salmon |> 
@@ -113,7 +116,7 @@ sampled_salmon |>
        y = "Count",
        title = "Hatchery Cost Recovery")
 ```
-
+Chum salmon are the salmon species that have been caught most often through hatchery catch recovery.
 
 
 ## Close the database connection
