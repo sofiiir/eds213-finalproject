@@ -70,11 +70,11 @@ sampled_salmon |>
 ```
 ### Create a color palette
 ```{r}
-pal <- c("chum" = "#78473f",
-         "chinook" = "#4d3d33", 
-         "pink" = "#cd5b47",
-         "sockeye" = "#a42c2d",
-         "coho" = "#6d6047")
+pal <- c("chum" = "#FF9F8C",
+         "chinook" = "#FF8B55", 
+         "pink" = "#CD5B47",
+         "sockeye" = "#913E3E",
+         "coho" = "#2E2824")
 ```
 
 
@@ -86,21 +86,27 @@ sampled_salmon |>
   filter(aslprojecttype == "commercial catch" | aslprojecttype == "escapement" | aslprojecttype == "hatchery cost recovery") |> 
   ggplot() +
   geom_col(aes(y = num_sample,
-               x = reorder(species, -num_sample))) +
+               x = reorder(species, -num_sample), 
+               fill = species),
+           show.legend = FALSE) +
   scale_fill_manual(values = pal) +
   facet_wrap(vars(aslprojecttype)) + 
   coord_flip() +
   theme_minimal() + 
   scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) +
   labs(x = "Salmon species",
-       y = "Count")
+       y = "Count") 
 ```
 
 ```{r}
 sampled_salmon |> 
   filter(aslprojecttype == "hatchery cost recovery") |> 
   ggplot() +
-  geom_col(aes(x = species, y = num_sample)) +
+  geom_col(aes(y = num_sample, 
+               x = reorder(species, -num_sample), 
+               fill = species),
+           show.legend = FALSE) +
+  scale_fill_manual(values = pal) +
   coord_flip() +
   theme_minimal() + 
   labs(x = "Salmon species",
