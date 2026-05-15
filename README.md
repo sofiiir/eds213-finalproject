@@ -1,4 +1,4 @@
-# Alaska Salmon Database 1922 - 2017
+# Database for Alaska Salmon Data 1922 - 2017
 
 This repository holds the code to create a relational database to house data on Alaska salmon data from 1922 - 2017. The Alaska salmon data can be found on [The Knowledge Network for Biocomplexity (KNB) dataset](https://knb.ecoinformatics.org/view/doi:10.5063/F1707ZTM). This dataset has over 14 million entries hence it is not included directly in this repository.
 
