@@ -1,7 +1,7 @@
 -- view the tables in the database
 .table
 
-
+-- view the data that we plan on using for the query
 SELECT * FROM Salmon LIMIT 5;
 SELECT * FROM Salmon_location LIMIT 5;
 

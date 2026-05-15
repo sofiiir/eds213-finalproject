@@ -1,4 +1,5 @@
 -- convert the clean dataframe into a table
+-- create a salmon data table
 CREATE TABLE Salmon (
     id BIGINT,
     salmon_id BIGINT PRIMARY KEY,
@@ -17,11 +18,12 @@ CREATE TABLE Salmon (
     locationunique VARCHAR 
 );
 
+-- load in the salmon data to the salmon table
 INSERT INTO Salmon
 SELECT * FROM read_csv('salmon_data_clean.csv', header=true, quote='"');
 
 
-
+-- create a locations table
 CREATE TABLE Salmon_location (
     id BIGINT,
     locationunique VARCHAR PRIMARY KEY,
@@ -35,19 +37,21 @@ CREATE TABLE Salmon_location (
     locationid VARCHAR
 );
 
+-- read in the locations data to the locations table
 INSERT INTO Salmon_location
 SELECT * FROM read_csv('location_clean.csv', header=true, quote='"');
 
+-- create a gear table
 CREATE TABLE Salmon_gear (
     id BIGINT,
     gear VARCHAR PRIMARY KEY,
     sasap_gear VARCHAR
 );
 
+-- load in the gear data into the gears table
 INSERT INTO Salmon_gear
 SELECT * FROM read_csv('gear_clean.csv', header=true, quote='"');
 
-SELECT * FROM Salmon_gear;
 
--- view the new table
+-- view the new tables
 .table
