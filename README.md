@@ -35,7 +35,7 @@ In addition to code that can be used to prepare the Alaska salmon data to be put
 
 - [alaska_salmon_master_cleaning.ipynb](https://github.com/sofiiir/eds213-finalproject/blob/main/alaska_salmon_master_cleaning.ipynb) : Jupyter notebook to clean the raw data.
 - [final_project_database.sql](https://github.com/sofiiir/eds213-finalproject/blob/main/final_project_database.sql) : SQL code for the database creation
-- [querying_salmon_database.sql](https://github.com/sofiiir/eds213-finalproject/blob/main/querying-salmon-database.sql) : SQL code to assess the Salmon catch by species for each project type
+- [querying_salmon_database.sql](https://github.com/sofiiir/eds213-finalproject/blob/main/querying_salmon_database.sql) : SQL code to assess the Salmon catch by species for each project type
 - [querying_alaska_salmon_database.qmd](https://github.com/sofiiir/eds213-finalproject/blob/main/querying_alaska_salmon_database.qmd): Quarto document to query the database for the total Salmon catch by species for each project type and visualization creation
 - [environment.yml](https://github.com/sofiiir/eds213-finalproject/blob/main/environment.yml): Yaml file to create an environment to run the python code
 - [requirements.txt](https://github.com/sofiiir/eds213-finalproject/blob/main/requirements.txt): Text file showing the dependencies needed to run the R code 
