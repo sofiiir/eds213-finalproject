@@ -2,7 +2,7 @@
 
 This repository holds the code to create a relational database to house data on Alaska salmon from 1922 - 2017. The Alaska salmon data is publicly available and can be found on [The Knowledge Network for Biocomplexity (KNB) dataset](https://knb.ecoinformatics.org/view/doi:10.5063/F1707ZTM). This dataset has over 14 million entries hence it is not included directly in this repository.
 
-In addition to code that can be used to prepare the Alaska salmon data to be put into a relational database, this repository houses code in SQL and R to investigate the count of each Salmon species that was collected through each project type. The final product is a visual of the top three project types based on overall salmon count. This visual can be created through the R quarto doc. 
+In addition to code that can be used to prepare the Alaska salmon data to be entered into a relational database, this repository houses code in SQL and R to investigate the count of each Salmon species that was collected for each project type, such as commercial fishing, recreational fishing, and escapement. The final product is a visual of the top three project types based on overall salmon count. This visual can be created through the R quarto doc. 
 
 ## Repository Structure
 
