@@ -46,7 +46,7 @@ head(locations)
 
 How many sampling are there for each species based on each sampling method throughout Alaska Salmon sampling from 1922 to 2017?
 ```{r}
-# use dblyr code to run a query
+# use dblyr code to run a query assessing the number of salmon based on each project type
 sampled_salmon <- salmon_data |> 
   left_join(locations, by = "locationunique", keep = FALSE) |> 
   group_by(species, aslprojecttype) |> 
@@ -59,16 +59,23 @@ sampled_salmon
 
 # Visualize findings
 
-There are a lot of different ASL Project Types. We'll just visualize the top three
+There are a lot of different ASL Project Types. We'll just visualize the top three!
 
+First we remove the NA's for the project type. These missing project types make sense since the data spans such a wide time period 1922 to 2017. The NA distinction just doesn't tell us anything in the context of our question.
 ```{r}
+# assess what projects have the most salmon counts
 sampled_salmon |> 
-  filter(aslprojecttype != "999") |> 
+  filter(aslprojecttype != "999") |> # remove any NA projects from the investigation
   group_by(aslprojecttype) |> 
   summarize(sum = sum(num_sample)) |> 
   arrange(desc(sum))
 ```
+
+The top three project types are commercial catch, escapement, and hatchery cost recovery. 
+
 ### Create a color palette
+
+This color palette will be used in the visual below. Though some may argue that color is unnecessary for this visualization since there is one y-axis furthest left, the color gives an easy way to interpret what species each bar is related to.
 ```{r}
 pal <- c("chum" = "#FF9F8C",
          "chinook" = "#FF8B55", 
@@ -78,28 +85,32 @@ pal <- c("chum" = "#FF9F8C",
 ```
 
 
-The top three ASL project type is commercial catch, escapement, and hatchery cost recovery.
+Again top three ASL project type is commercial catch, escapement, and hatchery cost recovery. Let's make a visualization showing the count by salmon species!
 
 ```{r}
 
 sampled_salmon |> 
-  filter(aslprojecttype == "commercial catch" | aslprojecttype == "escapement" | aslprojecttype == "hatchery cost recovery") |> 
+  filter(aslprojecttype == "commercial catch" 
+         | aslprojecttype == "escapement" 
+         | aslprojecttype == "hatchery cost recovery") |>  # select for the project types of interes
   ggplot() +
   geom_col(aes(y = num_sample,
-               x = reorder(species, -num_sample), 
+               x = reorder(species, -num_sample),  # arrange by count of each species
                fill = species),
            show.legend = FALSE) +
   scale_fill_manual(values = pal) +
   facet_wrap(vars(aslprojecttype)) + 
   coord_flip() +
   theme_minimal() + 
-  scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) +
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE)) + # maintain a raw number axis
   labs(x = "Salmon species",
        y = "Count") 
 ```
 Sockeye salmon are the salmon species that has been most caught through commercial catch and escapement. 
 
 #### A closer look at hatchery cost recovery
+
+The hatchery cost recovery counts per species are a lot less than the count for commercial catch and escapement. These values are hard to see in the faceted plot. Here we create a plot to scale based on only the hatchery cost recovery count numbers. 
 
 ```{r}
 sampled_salmon |> 
