@@ -23,12 +23,12 @@ In addition to code that can be used to prepare the Alaska salmon data to be put
 │   ├── gear_clean.csv
 │   ├── location_clean.csv
 │   └── salmon_data_clean.csv
-├── alaska-salmon-master-cleaning.ipynb
+├── alaska_salmon_master_cleaning.ipynb
 ├── querying_alaska_salmon_database.qmd
 ├── environment.yml
 ├── final_project_database.sql
 ├── requirements.txt
-└── querying-salmon-database.sql
+└── querying_salmon_database.sql
 ```
 
 ## Repository contents
