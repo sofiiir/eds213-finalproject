@@ -48,7 +48,7 @@ The data is publicly available through [The Knowledge Network for Biocomplexity 
 
 Clark, J.,  Brenner, R., & Lewis, B. (2018). Compiled age, sex, and length data for Alaskan salmon, 1922-2017. Retrieved from [https://knb.ecoinformatics.org/view/doi:10.5063/F1707ZTM](https://knb.ecoinformatics.org/view/doi:10.5063/F1707ZTM) 
 
-Oke, K.B., Cunningham, C.J., Westley, P.A.H. et al. Recent declines in salmon body size impact ecosystems and fisheries. Nat Commun 11, 4155 (2020). https://doi.org/10.1038/s41467-020-17726-z
+Oke, K.B., Cunningham, C.J., Westley, P.A.H. et al. (2020). Recent declines in salmon body size impact ecosystems and fisheries. Nat Commun 11, 4155. https://doi.org/10.1038/s41467-020-17726-z
 
 
 
